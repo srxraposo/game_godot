@@ -31,34 +31,57 @@ tracks/0/keys = {
 
 [node name="No-Principal" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 512.0 ]
+}
 game = ExtResource( 3 )
 
-[node name="Titulo" type="Label" parent="."]
+[node name="Inicial" type="Node2D" parent="."]
+
+[node name="Titulo" type="Label" parent="Inicial"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -135.0
-margin_top = -115.5
-margin_right = 135.0
-margin_bottom = 115.5
+margin_left = 377.0
+margin_top = 170.0
+margin_right = 647.0
+margin_bottom = 401.0
 custom_fonts/font = SubResource( 1 )
 text = "FALL"
+align = 1
+valign = 1
 
-[node name="Press" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.599856 )
-anchor_left = 0.509
-anchor_top = 0.76
-anchor_right = 0.509
-anchor_bottom = 0.76
-margin_left = -138.216
-margin_top = -37.0
-margin_right = 137.784
-margin_bottom = 35.0
+[node name="Press" type="Label" parent="Inicial"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 374.0
+margin_top = 456.0
+margin_right = 650.0
+margin_bottom = 528.0
 custom_fonts/font = SubResource( 2 )
 text = "PRESS ANY KEY"
 align = 1
 valign = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Press"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Inicial/Press"]
 anims/Piscadela = SubResource( 3 )
+
+[node name="Pontuacao" type="Node2D" parent="."]
+position = Vector2( 512, 50 )
+
+[node name="Pontuacao_partida" type="Label" parent="Pontuacao"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = -36.0
+margin_right = 104.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "GAME OVER"
+align = 1
+valign = 1

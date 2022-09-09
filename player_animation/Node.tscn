@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://player_animation/16Prancheta 1player1.png" type="Texture" id=1]
 [ext_resource path="res://player_animation/16Prancheta 1player3.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://Prancheta 1background_3.png" type="Texture" id=34]
 [ext_resource path="res://Prancheta 1cerca_frente.png" type="Texture" id=35]
 [ext_resource path="res://Prancheta 1cerca.png" type="Texture" id=36]
+[ext_resource path="res://player_animation/Scores.gd" type="Script" id=37]
 
 [sub_resource type="GradientTexture" id=22]
 
@@ -1128,7 +1129,6 @@ z_index = -2
 texture = SubResource( 22 )
 
 [node name="Node2D2" type="Node2D" parent="."]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="Node2D2"]
 script = ExtResource( 19 )
@@ -1192,7 +1192,6 @@ anims/queda_2 = SubResource( 24 )
 anims/right_hand = SubResource( 9 )
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D"]
 position = Vector2( 0, 250 )
@@ -1200,7 +1199,6 @@ frames = SubResource( 2 )
 frame = 12
 
 [node name="Control" type="Control" parent="."]
-visible = false
 margin_left = -2600.0
 margin_top = -1406.67
 margin_right = -2560.0
@@ -1229,15 +1227,16 @@ fill_mode = 4
 tint_under = Color( 1, 1, 1, 0.666667 )
 tint_progress = Color( 0.0784314, 0.760784, 0.0588235, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-visible = false
-margin_left = 760.004
-margin_top = 793.333
-margin_right = 960.004
-margin_bottom = 993.333
+[node name="RichTextLabel" type="Label" parent="Control"]
+margin_left = 773.333
+margin_top = 780.003
+margin_right = 920.333
+margin_bottom = 933.003
 rect_pivot_offset = Vector2( 100, 100 )
-custom_fonts/normal_font = SubResource( 10 )
-text = "D"
+custom_fonts/font = SubResource( 10 )
+text = "A"
+align = 1
+valign = 1
 
 [node name="TextProgress" type="TextureProgress" parent="Control"]
 margin_right = 1667.0
@@ -1266,7 +1265,6 @@ position = Vector2( 846.668, 846.667 )
 stream = ExtResource( 32 )
 
 [node name="Control2" type="Control" parent="."]
-visible = false
 margin_left = 926.668
 margin_top = -1406.67
 margin_right = 966.668
@@ -1295,17 +1293,20 @@ fill_mode = 4
 tint_under = Color( 1, 1, 1, 0.666667 )
 tint_progress = Color( 0.0784314, 0.760784, 0.0588235, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control2"]
-visible = false
-margin_left = 760.004
-margin_top = 793.333
-margin_right = 960.004
-margin_bottom = 993.333
+[node name="RichTextLabel" type="Label" parent="Control2"]
+margin_left = 753.332
+margin_top = 746.67
+margin_right = 953.332
+margin_bottom = 946.67
 rect_pivot_offset = Vector2( 100, 100 )
-custom_fonts/normal_font = SubResource( 10 )
+custom_fonts/font = SubResource( 10 )
 text = "D"
+align = 1
+valign = 1
 
 [node name="TextProgress" type="TextureProgress" parent="Control2"]
+margin_left = -0.00195313
+margin_top = 0.00341797
 margin_right = 1667.0
 margin_bottom = 1667.0
 rect_scale = Vector2( 0.5, 0.5 )
@@ -1332,19 +1333,22 @@ position = Vector2( 959.999, 846.667 )
 stream = ExtResource( 32 )
 
 [node name="Scores" type="Node2D" parent="."]
+script = ExtResource( 37 )
 
 [node name="Texto_score" type="Label" parent="Scores"]
-margin_left = 2253.33
-margin_top = -2166.67
-margin_right = 3237.33
-margin_bottom = -1239.67
+margin_left = 2307.0
+margin_top = -2133.0
+margin_right = 3291.0
+margin_bottom = -1671.0
 custom_fonts/font = SubResource( 25 )
-text = "000000
-"
+text = "0"
 align = 2
-valign = 1
+uppercase = true
 
+[connection signal="score" from="Node2D2/Node2D" to="Scores" method="_on_Node2D_score"]
 [connection signal="fail_click" from="Control/Timer" to="Node2D2/Node2D/Torre2" method="_fail_click"]
 [connection signal="fail_click" from="Control/Timer" to="Control" method="_fail_click"]
+[connection signal="timeout" from="Control/Timer" to="Control/Timer" method="_timeout"]
 [connection signal="fail_click" from="Control2/Timer" to="Node2D2/Node2D/Torre2" method="_fail_click"]
 [connection signal="fail_click" from="Control2/Timer" to="Control2" method="_fail_click"]
+[connection signal="timeout" from="Control2/Timer" to="Control2/Timer" method="_timeout"]

@@ -7,7 +7,7 @@ signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	randomize()
 	
 func start():
 	#$Node2D/AnimatedSprite.play()

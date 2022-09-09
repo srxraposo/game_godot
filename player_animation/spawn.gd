@@ -5,8 +5,6 @@ export (PackedScene) var estrutura
 var escadas = []
 var estruturas = []
 
-signal fail_click
-
 func f():
 	if escadas[0].global_position.y > 1000:
 		escadas.pop_front().queue_free()
@@ -40,9 +38,6 @@ func _ready():
 	estruturas.append($Respawn3)
 	
 	gerar(6, 6)
-	
-	connect("fail_click", self, "_fail_click")
-	
 	
 func _fail_click():
 	$AnimationPlayer.play("queda_2")

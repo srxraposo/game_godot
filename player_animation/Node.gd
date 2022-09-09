@@ -21,4 +21,3 @@ func start():
 
 func _on_Timer_fail_click():
 	emit_signal("game_over")
-	queue_free()

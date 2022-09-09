@@ -11,8 +11,10 @@ func f():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#connect("fail_click", self, "_fail_click")
-	pass
+	$TextProgress.visible = false
+	$TextProgress2.visible = false
+	$TextProgress3.visible = false
+	$RichTextLabel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

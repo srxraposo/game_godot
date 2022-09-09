@@ -13,9 +13,11 @@ func _ready():
 	final = get_node("Pontuacao")
 	inicial.get_node("Press/AnimationPlayer").play("Piscadela")
 	final.get_node("Pontuacao_partida").hide()
+	$Musica.play()
 	
 func _input(event):
 	if event is InputEventKey and event.pressed and k == null:
+		final.get_node("Pontuacao_partida").hide()
 		inicial.get_node("Titulo").hide()
 		inicial.get_node("Press").hide()
 		k = game.instance()
@@ -24,9 +26,14 @@ func _input(event):
 		k.start()
 
 func back_to_main_screen():
+	var OK = k.get_node("Scores").score
 	remove_child(k)
 	k = null
-	#inicial.get_node("Titulo").show()
+	var t = final.get_node("Pontuacao_partida")
+	t.text = str(OK)
+	t.show()
+	inicial.get_node("Titulo").show()
+	inicial.get_node("Press").show()
 	#inicial.get_node("Press").show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

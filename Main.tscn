@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://pathwaygothicone-regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://player_animation/Node.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 61
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Piscadela"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.75, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="No-Principal" type="Node"]
+script = ExtResource( 1 )
+game = ExtResource( 3 )
+
+[node name="Titulo" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -115.5
+margin_right = 135.0
+margin_bottom = 115.5
+custom_fonts/font = SubResource( 1 )
+text = "FALL"
+
+[node name="Press" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.599856 )
+anchor_left = 0.509
+anchor_top = 0.76
+anchor_right = 0.509
+anchor_bottom = 0.76
+margin_left = -138.216
+margin_top = -37.0
+margin_right = 137.784
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+text = "PRESS ANY KEY"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Press"]
+anims/Piscadela = SubResource( 3 )

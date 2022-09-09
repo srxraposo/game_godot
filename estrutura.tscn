@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://16Prancheta 1plataforma_sobre_base.png" type="Texture" id=1]
+
+[node name="estrutura" type="Sprite"]
+position = Vector2( -0.000976563, -2864 )
+texture = ExtResource( 1 )

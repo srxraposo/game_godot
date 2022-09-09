@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://16Prancheta 1escada_sobre_base.png" type="Texture" id=2]
+
+[node name="Respawn" type="Node2D"]
+position = Vector2( -0.000488281, -3184 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+scale = Vector2( 0.999999, 0.999999 )
+texture = ExtResource( 2 )

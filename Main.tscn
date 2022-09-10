@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pathwaygothicone-regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://player_animation/Node.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Patient Transmission - Ambient Tension Vol 1 FINAL MIX.wav" type="AudioStream" id=4]
+[ext_resource path="res://Fundo.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 61
+size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=3]
@@ -39,15 +41,23 @@ game = ExtResource( 3 )
 
 [node name="Inicial" type="Node2D" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="Inicial"]
+margin_right = 4267.0
+margin_bottom = 2501.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 5 )
+stretch_mode = 4
+
 [node name="Titulo" type="Label" parent="Inicial"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 377.0
-margin_top = 170.0
+margin_top = 275.0
 margin_right = 647.0
-margin_bottom = 401.0
+margin_bottom = 506.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "FALL"
 align = 1
@@ -59,9 +69,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 374.0
-margin_top = 456.0
+margin_top = 487.0
 margin_right = 650.0
-margin_bottom = 528.0
+margin_bottom = 559.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "PRESS ANY KEY"
 align = 1
@@ -82,14 +93,21 @@ margin_left = -104.0
 margin_top = 16.0
 margin_right = 104.0
 margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="Pontuacao"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -510.0
+margin_top = 80.0
+margin_right = 510.0
+margin_bottom = 127.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
 
 [node name="Musica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -1,5 +1,4 @@
 extends Node2D
-signal score
 
 var a = position
 var count = 0
@@ -11,7 +10,6 @@ func sett_position():
 		count = 0
 	else:
 		a = Vector2(0, 504)
-	emit_signal("score")
 	#print(a, count)
 	
 func move():

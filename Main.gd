@@ -3,6 +3,7 @@ export (PackedScene) var game
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+export (int) var score = null
 var k = null
 var inicial
 var final
@@ -12,14 +13,13 @@ func _ready():
 	inicial = get_node("Inicial")
 	final = get_node("Pontuacao")
 	inicial.get_node("Press/AnimationPlayer").play("Piscadela")
-	final.get_node("Pontuacao_partida").hide()
+	final.hide()
 	$Musica.play()
 	
 func _input(event):
 	if event is InputEventKey and event.pressed and k == null:
-		final.get_node("Pontuacao_partida").hide()
-		inicial.get_node("Titulo").hide()
-		inicial.get_node("Press").hide()
+		final.hide()
+		inicial.hide()
 		k = game.instance()
 		k.connect("game_over", self, "back_to_main_screen")
 		add_child(k)
@@ -27,13 +27,17 @@ func _input(event):
 
 func back_to_main_screen():
 	var OK = k.get_node("Scores").score
+	if !score or OK > score:
+		score = OK
+	
 	remove_child(k)
 	k = null
 	var t = final.get_node("Pontuacao_partida")
-	t.text = str(OK)
-	t.show()
-	inicial.get_node("Titulo").show()
-	inicial.get_node("Press").show()
+	var h = final.get_node("Label")
+	t.text = "Score: %d" % OK
+	h.text = "Highscore: %d" % score
+	inicial.show()
+	final.show()
 	#inicial.get_node("Press").show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
